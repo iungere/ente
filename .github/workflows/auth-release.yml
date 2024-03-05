@@ -41,10 +41,9 @@ jobs:
             - name: Dump env
               run: env | sort
             - name: Dump GitHub context
-              run: env | sort
+              run: echo "$GITHUB_CONTEXT"
               env:
                 GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
             - name: Build Android APK
               run: |
                   echo artifacts/ente-${{ github.event.release.tag_name }}.apk
