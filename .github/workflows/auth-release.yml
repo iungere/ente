@@ -35,7 +35,6 @@ jobs:
     build-test:
         runs-on: ubuntu-latest
         steps:
-            – run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
             - name: Build Android APK
               run: |
                   echo artifacts/ente-${{ github.event.release.tag_name }}.apk
