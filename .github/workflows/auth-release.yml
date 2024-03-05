@@ -35,14 +35,15 @@ env:
 jobs:
     build-test:
         runs-on: ubuntu-latest
-        defaults:
-            run:
-                working-directory: auth
         steps:
             - name: Build Android APK
               run: |
                   echo artifacts/ente-${{ github.event.release.tag_name }}.apk
                   echo "artifacts/ente-${{ github.event.release.tag_name }}.apk"
+                  echo "${{ github.event.release.tag_name }}"
+                  echo ${{ github.event.release.tag_name }}
+            - name: Build Android APK 2
+              run: echo ${{ github.event.release.tag_name }}
 
     build-ubuntu:
         if: false
