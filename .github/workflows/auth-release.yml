@@ -36,6 +36,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - run: echo "ref is ${{ github.ref }}"
+            - run: echo "tag is ${{ github.event.release.tag_name }}"
             - name: Build Android APK
               run: |
                   echo artifacts/ente-${{ github.event.release.tag_name }}.apk
