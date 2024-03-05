@@ -33,7 +33,19 @@ env:
     FLUTTER_VERSION: "3.16.9"
 
 jobs:
+    build-test:
+        runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: auth
+        steps:
+            - name: Build Android APK
+              run: |
+                  echo artifacts/ente-${{ github.event.release.tag_name }}.apk
+                  echo "artifacts/ente-${{ github.event.release.tag_name }}.apk"
+
     build-ubuntu:
+        if: false
         runs-on: ubuntu-latest
         defaults:
             run:
