@@ -25,8 +25,9 @@ name: "Release (auth)"
 
 on:
     push:
-      branch: ["workflow-test"]
-
+        branch: ["x-workflow-test"]
+        tags:
+            - "auth-v*"
 
 env:
     FLUTTER_VERSION: "3.16.9"
@@ -37,6 +38,13 @@ jobs:
         steps:
             - run: echo "ref is ${{ github.ref }}"
             - run: echo "tag is ${{ github.event.release.tag_name }}"
+            - name: Dump env
+              run: env | sort
+            - name: Dump GitHub context
+              run: env | sort
+              env:
+                GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
             - name: Build Android APK
               run: |
                   echo artifacts/ente-${{ github.event.release.tag_name }}.apk
@@ -45,4 +53,3 @@ jobs:
                   echo ${{ github.event.release.tag_name }}
             - name: Build Android APK 2
               run: echo ${{ github.event.release.tag_name }}
-
